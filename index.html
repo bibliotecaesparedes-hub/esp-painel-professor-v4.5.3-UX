@@ -1,29 +1,26 @@
+
 <!doctype html>
 <html lang="pt">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ESP.EE · Painel Professor</title>
+  <link rel="icon" href="favicon.ico">
 
   <!-- CSS -->
-  ./style.css
+  <link rel="stylesheet" href="./style.css">
 
   <!-- Dependências (DEVEM vir antes do app.js) -->
-  <!-- SweetAlert2 -->
-  https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js</script>
-  <!-- SheetJS (XLSX) -->
-  https://cdn.jsdelivr.net/npm/xlsx@0.20.2/dist/xlsx.full.min.js</script>
-  <!-- jsPDF + autotable -->
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/distn.js</script>
-  https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js</script>
-  <!-- MSAL (msal-browser) -->
-  https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js</script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.20.2/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
 
   <!-- A SUA lógica deve ser o ÚLTIMO script -->
-  ./app.js</script>
+  <script src="./app_seguro.js"></script>
 </head>
 <body>
-  <!-- Topbar -->
   <div class="topbar">
     <div class="brand">ESP.EE v4.5.3‑UX</div>
     <div class="top-actions">
@@ -33,84 +30,8 @@
       <button id="btnMsLogout" class="btn hidden">Sair</button>
     </div>
   </div>
-
   <div class="content stack gap">
-    <!-- HOJE -->
-    <section id="secHoje" class="section">
-      <div class="sec-head">
-        <h2>📅 Hoje</h2>
-        <div class="sec-actions">
-          <input id="dataHoje" type="date" class="input">
-          <button id="btnRefreshDay" class="btn">Recarregar</button>
-          <button id="btnCriarOficina" class="btn">Nova oficina</button>
-        </div>
-      </div>
-      <div id="sessoesHoje"></div>
-    </section>
-
-    <!-- REGISTOS -->
-    <section id="secRegistos" class="section">
-      <div class="sec-head">
-        <h2>📘 Registos</h2>
-        <div class="sec-actions">
-          <input id="fltIni" type="date" class="input" placeholder="De">
-          <input id="fltFim" type="date" class="input" placeholder="Até">
-          <button id="btnFiltrar" class="btn">Filtrar</button>
-          <button id="btnPdfSemana" class="btn">PDF semanal</button>
-          <button id="btnXlsxSemana" class="btn">XLSX semanal</button>
-          <button id="btnPdfAluno" class="btn">PDF por aluno</button>
-          <button id="btnXlsxAluno" class="btn">XLSX por aluno</button>
-          <!-- Novos botões (por disciplina / professor autenticado) -->
-          <button id="btnPdfDisciplina" class="btn">PDF por disciplina</button>
-          <button id="btnXlsxDisciplina" class="btn">XLSX por disciplina</button>
-        </div>
-      </div>
-      <div id="regList"></div>
-    </section>
-
-    <!-- ADMINISTRAÇÃO -->
-    <section id="admin" class="section hidden">
-      <div class="sec-head">
-        <h2>👥 Administração</h2>
-        <div class="sec-actions">
-          <select id="adminEntity" class="input" title="Entidade">
-            <option value="professores">Professores</option>
-            <option value="alunos">Alunos</option>
-            <option value="disciplinas">Disciplinas</option>
-            <option value="oficinas">Oficinas (Horários)</option>
-          </select>
-          <input id="adminSearch" class="input" placeholder="Pesquisar..." title="Pesquisar na grelha">
-          <button id="btnAdminNovo" class="btn">Novo</button>
-          <button id="btnAdminEditar" class="btn" disabled>Editar</button>
-          <button id="btnAdminApagar" class="btn" disabled>Apagar</button>
-          <button id="btnAdminExportLista" class="btn">Exportar lista (XLSX)</button>
-          <button id="btnAdminExportRegistos" class="btn">Exportar registos (PDF/XLSX)</button>
-        </div>
-      </div>
-
-      <div id="adminGrid" class="section" style="padding:0">
-        <!-- Tabela renderizada por JS -->
-      </div>
-
-      <div class="sec-head">
-        <h3>Ferramentas</h3>
-        <div class="sec-actions">
-          <input id="fileImport" type="file" class="input" accept=".xlsx,.json" multiple>
-          <button id="btnBackupNow" class="btn">Backup agora</button>
-          <button id="btnExportCfgJson" class="btn">Exportar Config (JSON)</button>
-          <button id="btnExportRegJson" class="btn">Exportar Registos (JSON)</button>
-          <button id="btnExportCfgXlsx" class="btn">Exportar Config (XLSX)</button>
-          <button id="btnExportRegXlsx" class="btn">Exportar Registos (XLSX)</button>
-          <button id="btnRestoreBackup" class="btn">Restaurar Backup</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONFIG / PREFERÊNCIAS -->
-    <section class="section">
-      <h2>⚙️ Configurações</h2>
-      <div class="muted">Preferências e backups.</div>
-    </section>
+    <!-- Conteúdo dinâmico gerado por app_seguro.js -->
   </div>
 </body>
 </html>
